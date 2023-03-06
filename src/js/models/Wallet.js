@@ -1,40 +1,19 @@
-var OpType = {
+const OpType = Object.freeze({
   OUT: "OUT",
   IN: "IN",
-};
+});
 
-var WalletErrors = {
+const WalletErrors = Object.freeze({
   INVALID_OPERATION: "INVALID_OPERATION",
   OPERATION_NOT_FOUND: "OPERATION_NOT_FOUND",
-};
-
-function getWallet() {
-  var wallet = localStorage.getItem("wallet");
-
-  if (!wallet) {
-    return {
-      balance: 0,
-      operations: [],
-    };
-  }
-  return JSON.parse(wallet);
-}
-
-function isValidOperation(op) {
-  return (
-    op &&
-    op.description &&
-    parseFloat(op.amount) > 0 &&
-    typeof OpType[op.type] !== undefined
-  );
-}
+});
 
 function Wallet() {
-  var balance = 0;
-  var operations = [];
+  let balance = 0;
+  let operations = [];
 
   function init() {
-    var wallet = getWallet();
+    const wallet = getWallet();
     balance = wallet.balance;
     operations = wallet.operations;
   }
@@ -50,7 +29,7 @@ function Wallet() {
     if (!isValidOperation(op)) {
       throw new Error(WalletErrors.INVALID_OPERATION);
     }
-    var operation = {
+    const operation = {
       amount: parseFloat(op.amount),
       description: op.description.trim(),
       type: op.type,
@@ -69,7 +48,7 @@ function Wallet() {
   };
 
   this.removeOperation = function (id) {
-    var operationIndex = findIndex(operations, (operation) => {
+    const operationIndex = findIndex(operations, (operation) => {
       return operation.date === id;
     });
 
@@ -77,7 +56,7 @@ function Wallet() {
       throw new Error(WalletErrors.OPERATION_NOT_FOUND);
     }
 
-    var operation = operations[operationIndex];
+    const operation = operations[operationIndex];
 
     if (operation.type === OpType.IN) {
       balance -= operation.amount;
@@ -90,8 +69,8 @@ function Wallet() {
   };
 
   this.findOperation = function (searchValue) {
-    var val = searchValue.toLowerCase().trim();
-    var operationsFound = [];
+    const val = searchValue.toLowerCase().trim();
+    const operationsFound = [];
 
     for (var i = 0; i < operations.length; i++) {
       var description = operations[i].description.toLowerCase();
