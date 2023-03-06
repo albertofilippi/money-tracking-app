@@ -69,15 +69,11 @@ function Wallet() {
   };
 
   this.removeOperation = function (id) {
-    var operationIndex;
-    for (var i = 0; i < operations.length; i++) {
-      if (operations[i].date === id) {
-        operationIndex = i;
-        break;
-      }
-    }
+    var operationIndex = findIndex(operations, (operation) => {
+      return operation.date === id;
+    });
 
-    if (typeof operationIndex === "undefined") {
+    if (operationIndex === -1) {
       throw new Error(WalletErrors.OPERATION_NOT_FOUND);
     }
 
