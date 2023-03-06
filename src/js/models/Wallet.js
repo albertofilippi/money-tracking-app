@@ -1,10 +1,15 @@
 var OpType = {
-  OUT: 0,
-  IN: 1,
+  OUT: "OUT",
+  IN: "IN",
+};
+
+var WalletErrors = {
+  INVALID_OPERATION: "INVALID_OPERATION",
 };
 
 function getWallet() {
   var wallet = localStorage.getItem("wallet");
+
   if (!wallet) {
     return {
       balance: 0,
@@ -14,8 +19,13 @@ function getWallet() {
   return JSON.parse(wallet);
 }
 
-function saveWallet(wallet) {
-  localStorage.setItem("wallet", JSON.stringify(wallet));
+function isValidOperation(op) {
+  return (
+    op &&
+    op.description &&
+    parseFloat(op.amount) > 0 &&
+    typeof OpType[op.type] !== undefined
+  );
 }
 
 function Wallet() {
@@ -28,9 +38,19 @@ function Wallet() {
     operations = wallet.operations;
   }
 
+  function saveWallet() {
+    localStorage.setItem(
+      "wallet",
+      JSON.stringify({ balance: balance, operations: operations })
+    );
+  }
+
   this.addOperation = function (op) {
+    if (!isValidOperation(op)) {
+      throw new Error(WalletErrors.INVALID_OPERATION);
+    }
     var operation = {
-      amount: op.amount,
+      amount: parseFloat(op.amount),
       description: op.description,
       type: op.type,
       date: new Date().getTime(),
