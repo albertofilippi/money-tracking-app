@@ -1,12 +1,20 @@
 // (function () {
-var wallet;
+let wallet;
 
 function addOperation(op) {
-  wallet.addOperation(op);
+  try {
+    wallet.addOperation(op);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 function removeOperation(id) {
-  return wallet.removeOperation(id);
+  try {
+    wallet.removeOperation(id);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 function findOperation(val) {
