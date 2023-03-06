@@ -9,7 +9,9 @@ function removeOperation(id) {
   return wallet.removeOperation(id);
 }
 
-function findOperation() {}
+function findOperation(val) {
+  return wallet.findOperation(val);
+}
 
 function getBalance() {
   return wallet.getBalance();

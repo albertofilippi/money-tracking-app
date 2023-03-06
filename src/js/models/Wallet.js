@@ -52,7 +52,7 @@ function Wallet() {
     }
     var operation = {
       amount: parseFloat(op.amount),
-      description: op.description,
+      description: op.description.trim(),
       type: op.type,
       date: new Date().getTime(),
     };
@@ -93,7 +93,20 @@ function Wallet() {
     saveWallet();
   };
 
-  this.findOperation = function () {};
+  this.findOperation = function (searchValue) {
+    var val = searchValue.toLowerCase().trim();
+    var operationsFound = [];
+
+    for (var i = 0; i < operations.length; i++) {
+      var description = operations[i].description.toLowerCase();
+      if (description.indexOf(val) > -1) {
+        operationsFound.push(operations[i]);
+        break;
+      }
+    }
+
+    return operationsFound;
+  };
 
   this.getBalance = function () {
     return balance;
