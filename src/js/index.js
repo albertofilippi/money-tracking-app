@@ -1,23 +1,25 @@
-(function () {
-  var wallet;
+// (function () {
+var wallet;
 
-  function addOperation(op) {
-    wallet.addOperation(op);
-  }
+function addOperation(op) {
+  wallet.addOperation(op);
+}
 
-  function removeOperation() {}
+function removeOperation(id) {
+  return wallet.removeOperation(id);
+}
 
-  function findOperation() {}
+function findOperation() {}
 
-  function getBalance() {
-    return wallet.getBalance();
-  }
+function getBalance() {
+  return wallet.getBalance();
+}
 
-  function getOperations() {
-    return wallet.getOperations();
-  }
+function getOperations() {
+  return wallet.getOperations();
+}
 
-  document.addEventListener("DOMContentLoaded", function () {
-    wallet = new Wallet();
-  });
-})();
+document.addEventListener("DOMContentLoaded", function () {
+  wallet = new Wallet();
+});
+// })();
