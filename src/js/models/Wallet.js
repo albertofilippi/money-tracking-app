@@ -1,3 +1,5 @@
+const { isValidOperation, getWallet, findIndex } = require("../utils");
+
 const OpType = Object.freeze({
   OUT: "OUT",
   IN: "IN",
@@ -93,3 +95,8 @@ function Wallet() {
 
   init();
 }
+
+module.exports = {
+  Wallet: Wallet,
+  WalletErrors: WalletErrors,
+};
