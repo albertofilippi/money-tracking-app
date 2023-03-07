@@ -1,6 +1,7 @@
 const gulp = require("gulp");
 const inject = require("gulp-inject");
 const paths = require("./paths");
+const args = require("yargs").argv;
 
 const compileIndex = function () {
   const jsIndex = gulp.src(paths.getJsEntryPath());
@@ -11,6 +12,11 @@ const compileIndex = function () {
 };
 
 const watchIndex = function (cb) {
+  const prod = args.prod;
+  if (prod) {
+    return cb();
+  }
+
   gulp.watch(paths.getHTMLEntryPath(), compileIndex);
   cb();
 };
