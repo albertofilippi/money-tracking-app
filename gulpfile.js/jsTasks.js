@@ -10,6 +10,11 @@ const copyJs = function () {
     .pipe(gulp.dest("./dist"));
 };
 
+const watchJS = function (cb) {
+  gulp.watch("./src/js/**/*", copyJs);
+  cb();
+};
 module.exports = {
   copyJs: copyJs,
+  watchJS: watchJS,
 };
