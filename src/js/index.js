@@ -1,35 +1,35 @@
-// (function () {
+const Wallet = require("./models/Wallet").Wallet;
+
 let wallet;
 
-function addOperation(op) {
+const addOperation = function (op) {
   try {
     wallet.addOperation(op);
   } catch (e) {
     console.log(e);
   }
-}
+};
 
-function removeOperation(id) {
+const removeOperation = function (id) {
   try {
     wallet.removeOperation(id);
   } catch (e) {
     console.error(e);
   }
-}
+};
 
-function findOperation(val) {
+const findOperation = function (val) {
   return wallet.findOperation(val);
-}
+};
 
-function getBalance() {
+const getBalance = function () {
   return wallet.getBalance();
-}
+};
 
-function getOperations() {
+const getOperations = function () {
   return wallet.getOperations();
-}
+};
 
 document.addEventListener("DOMContentLoaded", function () {
   wallet = new Wallet();
 });
-// })();
