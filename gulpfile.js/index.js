@@ -12,7 +12,7 @@ const clean = function (cb) {
   cb();
 };
 
-const dev = series(
+const build = series(
   clean,
   viewTasks.compileIndex,
   jsTasks.boundleJS,
@@ -22,5 +22,5 @@ const dev = series(
 );
 
 module.exports = {
-  dev: dev,
+  build: build,
 };
