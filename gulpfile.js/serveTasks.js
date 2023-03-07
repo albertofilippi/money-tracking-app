@@ -4,7 +4,8 @@ const args = require("yargs").argv;
 
 const serve = function (cb) {
   const prod = args.prod;
-  if (prod) {
+  const debug = args.debug;
+  if (prod && !debug) {
     return cb();
   }
 
