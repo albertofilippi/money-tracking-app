@@ -1,3 +1,11 @@
 .icon-delete {
   background-image: url(/icons/delete.svg);
 }
+
+.icon-close {
+  background-image: url(/icons/close.svg);
+}
+
+.icon-add {
+  background-image: url(/icons/add.svg);
+}
