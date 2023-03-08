@@ -99,4 +99,5 @@ function Wallet() {
 module.exports = {
   Wallet: Wallet,
   WalletErrors: WalletErrors,
+  OpType: OpType,
 };

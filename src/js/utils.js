@@ -1,3 +1,5 @@
+const { OpType } = require("./models/Wallet");
+
 function findIndex(list, cb) {
   for (var i = 0; i < list.length; i++) {
     if (cb(list[i])) {
