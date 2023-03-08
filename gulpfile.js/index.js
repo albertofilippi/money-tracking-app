@@ -16,6 +16,8 @@ const clean = function (cb) {
 const build = series(
   clean,
   viewTasks.compileIndex,
+  assetsTasks.processIcons,
+  assetsTasks.watchIcons,
   assetsTasks.processCSS,
   assetsTasks.watchCSS,
   jsTasks.boundleJS,
