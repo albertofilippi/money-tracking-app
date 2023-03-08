@@ -1,14 +1,5 @@
 const { isValidOperation, getWallet, findIndex } = require("../utils");
-
-const OpType = Object.freeze({
-  OUT: "OUT",
-  IN: "IN",
-});
-
-const WalletErrors = Object.freeze({
-  INVALID_OPERATION: "INVALID_OPERATION",
-  OPERATION_NOT_FOUND: "OPERATION_NOT_FOUND",
-});
+const { WalletErrors, OpType } = require("./enums");
 
 function Wallet() {
   let balance = 0;

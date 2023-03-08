@@ -1,4 +1,4 @@
-const { OpType } = require("./models/Wallet");
+const { OpType } = require("./models/enums");
 
 function findIndex(list, cb) {
   for (var i = 0; i < list.length; i++) {

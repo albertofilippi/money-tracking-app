@@ -1,5 +1,8 @@
 const utils = require("./utils");
-const { OpType } = require("./models/Wallet");
+const {
+  incomeOperation,
+  invalidOperation,
+} = require("../../jest/mockedStructures");
 
 describe("Utils testing suite", () => {
   beforeEach(() => {
@@ -24,35 +27,17 @@ describe("Utils testing suite", () => {
   });
 
   it("isValidOperation returns true if operation is valid", () => {
-    const operation = {
-      description: "Salary",
-      amount: 1000,
-      type: OpType.IN,
-    };
-
-    expect(utils.isValidOperation(operation)).toBeTruthy();
+    expect(utils.isValidOperation(incomeOperation)).toBeTruthy();
   });
 
   it("isValidOperation returns false if operation is not valid", () => {
-    const operation = {
-      description: "Salary",
-      amount: 0,
-      type: OpType.IN,
-    };
-
-    expect(utils.isValidOperation(operation)).toBeFalsy();
+    expect(utils.isValidOperation(invalidOperation)).toBeFalsy();
   });
 
   it("getWallet returns correct wallet if it exists in the local storage", () => {
-    const operation = {
-      description: "Salary",
-      amount: 1000,
-      type: OpType.IN,
-    };
-
     const wallet = {
       balance: 1000,
-      operations: [operation],
+      operations: [incomeOperation],
     };
 
     localStorage.setItem("wallet", JSON.stringify(wallet));
