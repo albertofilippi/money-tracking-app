@@ -16,6 +16,10 @@
   bottom: 20px;
 }
 
+.toast.toast--error {
+  background-color: var(--error-color);
+}
+
 .toast .toast__message {
   margin: 0;
   display: inline-block;
