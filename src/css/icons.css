@@ -15,6 +15,10 @@
   background-image: url(/icons/close.svg);
 }
 
+.icon-close-white {
+  background-image: url(/icons/close-white.svg);
+}
+
 .icon-add {
   background-image: url(/icons/add.svg);
 }
