@@ -59,6 +59,7 @@ const addOperation = function (event) {
     toggleModal();
     // resetFormFields(event.target);
     event.target.reset();
+    updateOperationsTable();
     showMessage("Operation added succesfully!", SnackbarTypes.SUCCESS);
   } catch (e) {
     showMessage("Operation not added!", SnackbarTypes.ERROR);
@@ -109,6 +110,51 @@ const updateBalance = () => {
   balanceElement.textContent = getBalance();
 };
 
+window.updateOperationsTable = () => {
+  const operations = Array.from(getOperations());
+  const tableElement = document.getElementById("table-body");
+
+  if (!tableElement) {
+    return;
+  }
+
+  tableElement.innerHTML = "";
+
+  operations.reverse().forEach((operation) => {
+    // Add operation to table
+    const trRow = document.createElement("tr");
+    trRow.setAttribute("data-op-type", operation.type.toLowerCase());
+
+    const tdDescription = document.createElement("td");
+    tdDescription.textContent = operation.description;
+
+    const tdAmount = document.createElement("td");
+    tdAmount.className = "operation-amount";
+    tdAmount.textContent = operation.amount;
+
+    const tdDate = document.createElement("td");
+    tdDate.textContent = new Date(operation.date).toLocaleString();
+
+    const tdAction = document.createElement("td");
+    const actionButton = document.createElement("button");
+    actionButton.className = "button button-icon button-animated icon-delete";
+    tdAction.className = "align-text-center";
+
+    actionButton.onclick = () => {
+      removeOperation(operation.id);
+    };
+
+    tdAction.appendChild(actionButton);
+
+    trRow.appendChild(tdDescription);
+    trRow.appendChild(tdAmount);
+    trRow.appendChild(tdDate);
+    trRow.appendChild(tdAction);
+
+    tableElement.appendChild(trRow);
+  });
+};
+
 window.addOperation = addOperation;
 window.toggleModal = toggleModal;
 window.closeSnackbar = closeSnackbar;
@@ -116,4 +162,5 @@ window.closeSnackbar = closeSnackbar;
 document.addEventListener("DOMContentLoaded", function () {
   wallet = new Wallet();
   updateBalance();
+  updateOperationsTable();
 });

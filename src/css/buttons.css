@@ -43,4 +43,5 @@
   width: 56px;
   height: 56px;
   border: 1px solid var(--primary-color);
+  background-color: white;
 }
