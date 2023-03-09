@@ -69,8 +69,11 @@ const addOperation = function (event) {
 const removeOperation = function (id) {
   try {
     wallet.removeOperation(id);
+    updateOperationsTable();
+    updateBalance();
+    showMessage("Operation removed succesfully!", SnackbarTypes.SUCCESS);
   } catch (e) {
-    console.error(e);
+    showMessage("Operation not removed!", SnackbarTypes.ERROR);
   }
 };
 
@@ -165,7 +168,7 @@ const getDeleteActionBtn = (operation) => {
   tdAction.className = "align-text-center";
 
   actionButton.onclick = () => {
-    removeOperation(operation.id);
+    removeOperation(operation.date);
   };
 
   tdAction.appendChild(actionButton);
