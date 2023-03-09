@@ -8,7 +8,13 @@ const WalletErrors = Object.freeze({
   OPERATION_NOT_FOUND: "OPERATION_NOT_FOUND",
 });
 
+const SnackbarTypes = Object.freeze({
+  SUCCESS: "SUCCESS",
+  ERROR: "ERROR",
+});
+
 module.exports = {
   OpType: OpType,
   WalletErrors: WalletErrors,
+  SnackbarTypes: SnackbarTypes,
 };
