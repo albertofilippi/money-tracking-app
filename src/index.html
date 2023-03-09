@@ -76,7 +76,7 @@
           ></button>
         </div>
         <div class="modal__main">
-          <form>
+          <form onsubmit="addOperation(event)">
             <div class="row">
               <label for="amount-input">Amount</label>
               <input
@@ -84,6 +84,10 @@
                 class="custom-input u-full-width"
                 id="amount-input"
                 type="number"
+                min="0.01"
+                step="0.01"
+                name="amount"
+                required
               />
               <p class="label-error">At least more than zero</p>
             </div>
@@ -94,12 +98,19 @@
                 class="custom-input u-full-width"
                 id="description-input"
                 type="text"
+                name="description"
+                required
+                minlength="1"
               />
               <p class="label-error">At least more than one character</p>
             </div>
             <div class="row">
-              <button class="button-success">Add Income</button>
-              <button class="button-error">Add Expense</button>
+              <button class="button-success" type="submit" data-type="IN">
+                Add Income
+              </button>
+              <button class="button-error" type="submit" data-type="OUT">
+                Add Expense
+              </button>
             </div>
           </form>
         </div>
