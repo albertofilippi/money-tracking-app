@@ -120,39 +120,57 @@ window.updateOperationsTable = () => {
 
   tableElement.innerHTML = "";
 
-  operations.reverse().forEach((operation) => {
-    // Add operation to table
-    const trRow = document.createElement("tr");
-    trRow.setAttribute("data-op-type", operation.type.toLowerCase());
+  operations
+    .reverse()
+    .forEach((operation) =>
+      tableElement.appendChild(getOperationTableRow(operation))
+    );
+};
 
-    const tdDescription = document.createElement("td");
-    tdDescription.textContent = operation.description;
+const getOperationTableRow = (operation) => {
+  const trRow = document.createElement("tr");
+  trRow.setAttribute("data-op-type", operation.type.toLowerCase());
 
-    const tdAmount = document.createElement("td");
-    tdAmount.className = "operation-amount";
-    tdAmount.textContent = operation.amount;
+  const cells = [
+    {
+      value: operation.description,
+    },
+    {
+      value: operation.amount,
+      classes: "operation-amount",
+    },
+    {
+      value: new Date(operation.date).toLocaleString(),
+    },
+  ];
 
-    const tdDate = document.createElement("td");
-    tdDate.textContent = new Date(operation.date).toLocaleString();
-
-    const tdAction = document.createElement("td");
-    const actionButton = document.createElement("button");
-    actionButton.className = "button button-icon button-animated icon-delete";
-    tdAction.className = "align-text-center";
-
-    actionButton.onclick = () => {
-      removeOperation(operation.id);
-    };
-
-    tdAction.appendChild(actionButton);
-
-    trRow.appendChild(tdDescription);
-    trRow.appendChild(tdAmount);
-    trRow.appendChild(tdDate);
-    trRow.appendChild(tdAction);
-
-    tableElement.appendChild(trRow);
+  cells.forEach((cell) => {
+    const td = document.createElement("td");
+    td.textContent = cell.value;
+    if (cell.classes) {
+      td.className = cell.classes;
+    }
+    trRow.appendChild(td);
   });
+
+  trRow.appendChild(getDeleteActionBtn(operation));
+
+  return trRow;
+};
+
+const getDeleteActionBtn = (operation) => {
+  const tdAction = document.createElement("td");
+  const actionButton = document.createElement("button");
+  actionButton.className = "button button-icon button-animated icon-delete";
+  tdAction.className = "align-text-center";
+
+  actionButton.onclick = () => {
+    removeOperation(operation.id);
+  };
+
+  tdAction.appendChild(actionButton);
+
+  return tdAction;
 };
 
 window.addOperation = addOperation;
