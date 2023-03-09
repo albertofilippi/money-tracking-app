@@ -67,7 +67,7 @@
       </div>
       <!-- End Table Container -->
       <!-- Start modal container -->
-      <div class="modal hide">
+      <div class="modal">
         <div class="modal__header row">
           <h2>Add operation</h2>
           <button
@@ -84,6 +84,7 @@
                 id="amount-input"
                 type="number"
               />
+              <p class="label-error">At least more than zero</p>
             </div>
             <div class="row">
               <label for="description-input">Description</label>
@@ -93,6 +94,7 @@
                 id="description-input"
                 type="text"
               />
+              <p class="label-error">At least more than one character</p>
             </div>
             <div class="row">
               <button class="button-success">Add Income</button>
