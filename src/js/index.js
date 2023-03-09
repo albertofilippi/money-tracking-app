@@ -32,13 +32,13 @@ const showMessage = (msg, type) => {
   setTimeout(() => closeSnackbar(), 4000);
 };
 
-const resetFormFields = (form) => {
-  const amountInput = form.amount;
-  const descriptionInput = form.description;
+// const resetFormFields = (form) => {
+//   const amountInput = form.amount;
+//   const descriptionInput = form.description;
 
-  amountInput.value = 0;
-  descriptionInput.value = "";
-};
+//   amountInput.value = 0;
+//   descriptionInput.value = "";
+// };
 
 const addOperation = function (event) {
   event.preventDefault();
@@ -56,7 +56,8 @@ const addOperation = function (event) {
   try {
     wallet.addOperation(operation);
     toggleModal();
-    resetFormFields(event.target);
+    // resetFormFields(event.target);
+    event.target.reset();
     showMessage("Operation added succesfully!", SnackbarTypes.SUCCESS);
   } catch (e) {
     showMessage("Operation not added!", SnackbarTypes.ERROR);
