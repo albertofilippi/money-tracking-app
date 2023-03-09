@@ -24,6 +24,11 @@ header .content {
   padding: 0 20px;
 }
 
+.header-options #balance-box:before {
+  content: "€";
+  margin-right: 4px;
+}
+
 header h1,
 header p {
   margin: 0;

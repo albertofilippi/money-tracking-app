@@ -55,6 +55,7 @@ const addOperation = function (event) {
 
   try {
     wallet.addOperation(operation);
+    updateBalance();
     toggleModal();
     // resetFormFields(event.target);
     event.target.reset();
@@ -99,10 +100,20 @@ const toggleModal = () => {
   modalComponent.classList.add("hide");
 };
 
+const updateBalance = () => {
+  const balanceElement = document.getElementById("balance-box");
+  if (!balanceElement) {
+    return;
+  }
+
+  balanceElement.textContent = getBalance();
+};
+
 window.addOperation = addOperation;
 window.toggleModal = toggleModal;
 window.closeSnackbar = closeSnackbar;
 
 document.addEventListener("DOMContentLoaded", function () {
   wallet = new Wallet();
+  updateBalance();
 });
