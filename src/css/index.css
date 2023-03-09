@@ -6,11 +6,24 @@ header .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1024px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
   height: 56px;
-  padding: 0 12px;
+  padding: 0 20px;
+}
+
+@media (min-width: 400px) {
+  header .content {
+    padding: 0;
+    width: 85%;
+  }
+}
+
+@media (min-width: 550px) {
+  header .content {
+    width: 80%;
+  }
 }
 
 header h1,
@@ -24,6 +37,10 @@ header h1 {
 
 main.container {
   margin-top: 24px;
+}
+
+table {
+  table-layout: fixed;
 }
 
 tr[data-op-type="expense"] .operation-amount {
