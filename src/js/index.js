@@ -130,16 +130,17 @@ const updateBalance = () => {
 };
 
 const updateOperationsTable = (initialOperations = getOperations()) => {
+  const tableContainerElement = document.getElementById("table-container");
+  const tableElement = document.getElementById("table-body");
+
   if (
-    Array.isArray(initialOperations) ||
+    !Array.isArray(initialOperations) ||
     !tableElement ||
     !tableContainerElement
   ) {
     return;
   }
   const operations = [...initialOperations];
-  const tableContainerElement = document.getElementById("table-container");
-  const tableElement = document.getElementById("table-body");
 
   tableElement.innerHTML = "";
   if (!operations.length) {
@@ -203,7 +204,7 @@ const getDeleteActionBtn = (operation) => {
 };
 
 const onSearchInputChange = (event) => {
-  const searchValue = event.target.value;
+  const { value: searchValue } = event.target;
   const resetSearchElmnt = document.getElementById("reset-search-btn");
 
   if (!resetSearchElmnt) {

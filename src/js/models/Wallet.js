@@ -25,16 +25,20 @@ class Wallet {
     if (!isValidOperation(op)) {
       throw new Error(WalletErrors.INVALID_OPERATION);
     }
+
+    const { description, type, amount } = op;
+    const currentDate = new Date().getTime();
+
     const operation = {
-      amount: parseFloat(op.amount),
-      description: op.description.trim(),
-      type: op.type,
-      date: new Date().getTime(),
+      amount: parseFloat(amount),
+      description: description.trim(),
+      type,
+      date: currentDate,
     };
 
-    if (op.type === OpType.IN) {
+    if (type === OpType.IN) {
       this.balance += operation.amount;
-    } else if (op.type === OpType.OUT) {
+    } else if (type === OpType.OUT) {
       this.balance -= operation.amount;
     }
 
@@ -46,19 +50,19 @@ class Wallet {
   removeOperation(id) {
     const operationIndex = findIndex(
       this.operations,
-      (operation) => operation.date === id
+      ({ date }) => date === id
     );
 
     if (operationIndex === -1) {
       throw new Error(WalletErrors.OPERATION_NOT_FOUND);
     }
 
-    const operation = this.operations[operationIndex];
+    const { type, amount } = this.operations[operationIndex];
 
-    if (operation.type === OpType.IN) {
-      this.balance -= operation.amount;
-    } else if (operation.type === OpType.OUT) {
-      this.balance += operation.amount;
+    if (type === OpType.IN) {
+      this.balance -= amount;
+    } else if (type === OpType.OUT) {
+      this.balance += amount;
     }
 
     this.operations.splice(operationIndex, 1);
