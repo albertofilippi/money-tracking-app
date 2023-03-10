@@ -2,22 +2,23 @@ import { isValidOperation, getWallet, findIndex } from "../utils";
 import { WalletErrors, OpType } from "./enums";
 
 class Wallet {
+  #balance = 0;
+  #operations = [];
+
   constructor() {
-    this.balance = 0;
-    this.operations = [];
-    this.init();
+    this.#init();
   }
 
-  init() {
+  #init() {
     const wallet = getWallet();
-    this.balance = wallet.balance;
-    this.operations = wallet.operations;
+    this.#balance = wallet.balance;
+    this.#operations = wallet.operations;
   }
 
   saveWallet() {
     localStorage.setItem(
       "wallet",
-      JSON.stringify({ balance: this.balance, operations: this.operations })
+      JSON.stringify({ balance: this.#balance, operations: this.#operations })
     );
   }
 
@@ -37,19 +38,19 @@ class Wallet {
     };
 
     if (type === OpType.IN) {
-      this.balance += operation.amount;
+      this.#balance += operation.amount;
     } else if (type === OpType.OUT) {
-      this.balance -= operation.amount;
+      this.#balance -= operation.amount;
     }
 
-    this.operations.push(operation);
+    this.#operations.push(operation);
 
     this.saveWallet();
   }
 
   removeOperation(id) {
     const operationIndex = findIndex(
-      this.operations,
+      this.#operations,
       ({ date }) => date === id
     );
 
@@ -57,15 +58,15 @@ class Wallet {
       throw new Error(WalletErrors.OPERATION_NOT_FOUND);
     }
 
-    const { type, amount } = this.operations[operationIndex];
+    const { type, amount } = this.#operations[operationIndex];
 
     if (type === OpType.IN) {
-      this.balance -= amount;
+      this.#balance -= amount;
     } else if (type === OpType.OUT) {
-      this.balance += amount;
+      this.#balance += amount;
     }
 
-    this.operations.splice(operationIndex, 1);
+    this.#operations.splice(operationIndex, 1);
     this.saveWallet();
   }
 
@@ -73,15 +74,15 @@ class Wallet {
     const val = searchValue.toLowerCase().trim();
 
     if (!val) {
-      return this.operations;
+      return this.#operations;
     }
 
     const operationsFound = [];
 
-    for (var i = 0; i < this.operations.length; i++) {
-      var description = this.operations[i].description.toLowerCase();
+    for (var i = 0; i < this.#operations.length; i++) {
+      var description = this.#operations[i].description.toLowerCase();
       if (description.includes(val)) {
-        operationsFound.push(this.operations[i]);
+        operationsFound.push(this.#operations[i]);
       }
     }
 
@@ -89,11 +90,11 @@ class Wallet {
   }
 
   getBalance() {
-    return this.balance;
+    return this.#balance;
   }
 
   getOperations() {
-    return this.operations;
+    return this.#operations;
   }
 }
 
