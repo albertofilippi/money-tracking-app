@@ -77,8 +77,12 @@ const removeOperation = function (id) {
   }
 };
 
-const findOperation = function (val) {
-  return wallet.findOperation(val);
+const searchOperation = function (event) {
+  event.preventDefault();
+  const searchValue = event.target.searchInput;
+  const operationsToAdd = wallet.findOperation(searchValue.value);
+
+  updateOperationsTable(operationsToAdd);
 };
 
 const getBalance = function () {
@@ -113,8 +117,10 @@ const updateBalance = () => {
   balanceElement.textContent = getBalance();
 };
 
-window.updateOperationsTable = () => {
-  const operations = Array.from(getOperations());
+const updateOperationsTable = (initialOperation) => {
+  const operations = Array.isArray(initialOperation)
+    ? Array.from(initialOperation)
+    : Array.from(getOperations());
   const tableContainerElement = document.getElementById("table-container");
   const tableElement = document.getElementById("table-body");
 
@@ -186,6 +192,7 @@ const getDeleteActionBtn = (operation) => {
 window.addOperation = addOperation;
 window.toggleModal = toggleModal;
 window.closeSnackbar = closeSnackbar;
+window.searchOperation = searchOperation;
 
 document.addEventListener("DOMContentLoaded", function () {
   wallet = new Wallet();

@@ -34,9 +34,16 @@
       <!-- Start search container -->
       <div class="row">
         <div class="custom-input-container">
-          <label for="search-input">Search</label>
-          <input type="text" placeholder="Bill" id="search-input" />
-          <button class="button-icon icon-search"></button>
+          <form onsubmit="searchOperation(event)">
+            <label for="search-input">Search</label>
+            <input
+              type="text"
+              placeholder="Bill"
+              name="searchInput"
+              id="search-input"
+            />
+            <button class="button-icon icon-search"></button>
+          </form>
         </div>
       </div>
       <!-- End search container -->
