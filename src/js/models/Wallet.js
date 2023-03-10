@@ -44,9 +44,10 @@ class Wallet {
   }
 
   removeOperation(id) {
-    const operationIndex = findIndex(this.operations, (operation) => {
-      return operation.date === id;
-    });
+    const operationIndex = findIndex(
+      this.operations,
+      (operation) => operation.date === id
+    );
 
     if (operationIndex === -1) {
       throw new Error(WalletErrors.OPERATION_NOT_FOUND);
