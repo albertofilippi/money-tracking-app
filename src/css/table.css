@@ -1,32 +1,32 @@
 #table-container.no-data .fallback-message {
-  display: block;
+    display: block;
 }
 
 #table-container.no-data table {
-  display: none;
+    display: none;
 }
 
 .fallback-message {
-  text-align: center;
-  font-size: 2rem;
-  margin: 0;
-  margin-top: 3rem;
-  display: none;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 3rem;
+    display: none;
 }
 
 table {
-  table-layout: fixed;
+    table-layout: fixed;
 }
 
-tr[data-op-type="out"] .operation-amount {
-  color: var(--error-color);
+tr[data-op-type='out'] .operation-amount {
+    color: var(--error-color);
 }
 
-tr[data-op-type="in"] .operation-amount {
-  color: var(--success-color);
+tr[data-op-type='in'] .operation-amount {
+    color: var(--success-color);
 }
 
 .operation-amount::before {
-  content: "€";
-  margin-right: 4px;
+    content: '€';
+    margin-right: 4px;
 }

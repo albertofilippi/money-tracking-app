@@ -1,28 +1,28 @@
 .icon {
-  width: 18px;
-  height: 18px;
-  background-repeat: no-repeat;
-  background-size: 18px;
-  display: inline-block;
-  vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .icon-delete {
-  background-image: url(/icons/delete.svg);
+    background-image: url(/icons/delete.svg);
 }
 
 .icon-close {
-  background-image: url(/icons/close.svg);
+    background-image: url(/icons/close.svg);
 }
 
 .icon-close-white {
-  background-image: url(/icons/close-white.svg);
+    background-image: url(/icons/close-white.svg);
 }
 
 .icon-add {
-  background-image: url(/icons/add.svg);
+    background-image: url(/icons/add.svg);
 }
 
 .icon-search {
-  background-image: url(/icons/search.svg);
+    background-image: url(/icons/search.svg);
 }

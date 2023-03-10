@@ -1,53 +1,56 @@
 {
-  "name": "money-tracking-app",
-  "version": "0.1.0",
-  "description": "A budget app to manage own money",
-  "main": "src/js/index.js",
-  "scripts": {
-    "test": "jest --collect-coverage",
-    "dev": "gulp build --dev",
-    "prod": "gulp build --prod",
-    "prod:debug": "npm run prod -- --debug"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/albertofilippi/money-tracking-app.git"
-  },
-  "keywords": [
-    "budget",
-    "app",
-    "money"
-  ],
-  "author": "Alberto Filippi",
-  "license": "SEE LICENSE IN LICENSE.md",
-  "bugs": {
-    "url": "https://github.com/albertofilippi/money-tracking-app/issues"
-  },
-  "homepage": "https://github.com/albertofilippi/money-tracking-app#readme",
-  "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/eslint-parser": "^7.19.1",
-    "@babel/eslint-plugin": "^7.19.1",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-private-methods": "^7.18.6",
-    "@babel/preset-env": "^7.20.2",
-    "babelify": "^10.0.0",
-    "browser-sync": "^2.28.3",
-    "browserify": "^17.0.0",
-    "del": "^6.1.1",
-    "eslint": "^8.35.0",
-    "eslint-config-google": "^0.14.0",
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-if": "^3.0.0",
-    "gulp-inject": "^5.0.5",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-svgmin": "^4.1.0",
-    "gulp-uglify": "^3.0.2",
-    "jest": "^26.6.3",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0",
-    "yargs": "^17.7.1"
-  }
+    "name": "money-tracking-app",
+    "version": "0.1.0",
+    "description": "A budget app to manage own money",
+    "main": "src/js/index.js",
+    "scripts": {
+        "test": "jest --collect-coverage",
+        "dev": "gulp build --dev",
+        "prod": "gulp build --prod",
+        "prod:debug": "npm run prod -- --debug",
+        "format": "prettier src/**/* --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/albertofilippi/money-tracking-app.git"
+    },
+    "keywords": [
+        "budget",
+        "app",
+        "money"
+    ],
+    "author": "Alberto Filippi",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "bugs": {
+        "url": "https://github.com/albertofilippi/money-tracking-app/issues"
+    },
+    "homepage": "https://github.com/albertofilippi/money-tracking-app#readme",
+    "devDependencies": {
+        "@babel/core": "^7.21.0",
+        "@babel/eslint-parser": "^7.19.1",
+        "@babel/eslint-plugin": "^7.19.1",
+        "@babel/plugin-proposal-class-properties": "^7.18.6",
+        "@babel/plugin-proposal-private-methods": "^7.18.6",
+        "@babel/preset-env": "^7.20.2",
+        "babelify": "^10.0.0",
+        "browser-sync": "^2.28.3",
+        "browserify": "^17.0.0",
+        "del": "^6.1.1",
+        "eslint": "^8.35.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-config-prettier": "^8.7.0",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-if": "^3.0.0",
+        "gulp-inject": "^5.0.5",
+        "gulp-minify-css": "^1.2.4",
+        "gulp-sourcemaps": "^3.0.0",
+        "gulp-svgmin": "^4.1.0",
+        "gulp-uglify": "^3.0.2",
+        "jest": "^26.6.3",
+        "prettier": "^2.8.4",
+        "vinyl-buffer": "^1.0.1",
+        "vinyl-source-stream": "^2.0.0",
+        "yargs": "^17.7.1"
+    }
 }
