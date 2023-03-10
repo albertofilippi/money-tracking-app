@@ -16,11 +16,7 @@ function isValidOperation(op) {
     }
 
     const { description, type, amount } = op;
-    return (
-        description &&
-        parseFloat(amount) > 0 &&
-        typeof OpType[type] !== undefined
-    );
+    return description && parseFloat(amount) > 0 && OpType[type];
 }
 
 function getWallet() {

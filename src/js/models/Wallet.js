@@ -82,8 +82,8 @@ class Wallet {
 
         const operationsFound = [];
 
-        for (var i = 0; i < this.#operations.length; i++) {
-            var description = this.#operations[i].description.toLowerCase();
+        for (let i = 0; i < this.#operations.length; i++) {
+            const description = this.#operations[i].description.toLowerCase();
             if (description.includes(val)) {
                 operationsFound.push(this.#operations[i]);
             }

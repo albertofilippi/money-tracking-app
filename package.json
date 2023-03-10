@@ -8,7 +8,14 @@
         "dev": "gulp build --dev",
         "prod": "gulp build --prod",
         "prod:debug": "npm run prod -- --debug",
-        "format": "prettier src/**/* --write"
+        "format": "prettier src/**/* --write",
+        "linting": "eslint src/"
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint",
+            "prettier --write"
+        ]
     },
     "repository": {
         "type": "git",
