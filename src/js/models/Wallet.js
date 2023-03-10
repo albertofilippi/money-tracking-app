@@ -1,5 +1,5 @@
-const { isValidOperation, getWallet, findIndex } = require("../utils");
-const { WalletErrors, OpType } = require("./enums");
+import { isValidOperation, getWallet, findIndex } from "../utils";
+import { WalletErrors, OpType } from "./enums";
 
 class Wallet {
   constructor() {
@@ -93,4 +93,4 @@ class Wallet {
   }
 }
 
-module.exports = Wallet;
+export default Wallet;

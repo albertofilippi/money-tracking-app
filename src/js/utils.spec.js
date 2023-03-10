@@ -1,4 +1,4 @@
-const utils = require("./utils");
+import { findIndex, isValidOperation, getWallet } from "./utils";
 const {
   incomeOperation,
   invalidOperation,
@@ -10,7 +10,7 @@ describe("Utils testing suite", () => {
   });
   it("findIndex returns correct index", () => {
     const list = [1, 2, 3, 4];
-    const index = utils.findIndex(list, (item) => {
+    const index = findIndex(list, (item) => {
       return item === 3;
     });
 
@@ -19,7 +19,7 @@ describe("Utils testing suite", () => {
 
   it("findIndex returns -1 when item not found", () => {
     const list = [1, 2, 3, 4];
-    const index = utils.findIndex(list, (item) => {
+    const index = findIndex(list, (item) => {
       return item === 10;
     });
 
@@ -27,11 +27,11 @@ describe("Utils testing suite", () => {
   });
 
   it("isValidOperation returns true if operation is valid", () => {
-    expect(utils.isValidOperation(incomeOperation)).toBeTruthy();
+    expect(isValidOperation(incomeOperation)).toBeTruthy();
   });
 
   it("isValidOperation returns false if operation is not valid", () => {
-    expect(utils.isValidOperation(invalidOperation)).toBeFalsy();
+    expect(isValidOperation(invalidOperation)).toBeFalsy();
   });
 
   it("getWallet returns correct wallet if it exists in the local storage", () => {
@@ -42,7 +42,7 @@ describe("Utils testing suite", () => {
 
     localStorage.setItem("wallet", JSON.stringify(wallet));
 
-    expect(utils.getWallet()).toEqual(wallet);
+    expect(getWallet()).toEqual(wallet);
   });
 
   it("getWallet returns standard wallet if it doesn't exists in the local storage", () => {
@@ -51,6 +51,6 @@ describe("Utils testing suite", () => {
       operations: [],
     };
 
-    expect(utils.getWallet()).toEqual(wallet);
+    expect(getWallet()).toEqual(wallet);
   });
 });

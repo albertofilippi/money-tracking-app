@@ -1,5 +1,5 @@
-const Wallet = require("./models/Wallet");
-const { SnackbarTypes } = require("./models/enums");
+import Wallet from "./models/Wallet";
+import { SnackbarTypes } from "./models/enums";
 
 let wallet;
 
