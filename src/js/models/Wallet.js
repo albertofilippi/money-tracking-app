@@ -1,24 +1,27 @@
 const { isValidOperation, getWallet, findIndex } = require("../utils");
 const { WalletErrors, OpType } = require("./enums");
 
-function Wallet() {
-  let balance = 0;
-  let operations = [];
-
-  function init() {
-    const wallet = getWallet();
-    balance = wallet.balance;
-    operations = wallet.operations;
+class Wallet {
+  constructor() {
+    this.balance = 0;
+    this.operations = [];
+    this.init();
   }
 
-  function saveWallet() {
+  init() {
+    const wallet = getWallet();
+    this.balance = wallet.balance;
+    this.operations = wallet.operations;
+  }
+
+  saveWallet() {
     localStorage.setItem(
       "wallet",
-      JSON.stringify({ balance: balance, operations: operations })
+      JSON.stringify({ balance: this.balance, operations: this.operations })
     );
   }
 
-  this.addOperation = function (op) {
+  addOperation(op) {
     if (!isValidOperation(op)) {
       throw new Error(WalletErrors.INVALID_OPERATION);
     }
@@ -30,18 +33,18 @@ function Wallet() {
     };
 
     if (op.type === OpType.IN) {
-      balance += operation.amount;
+      this.balance += operation.amount;
     } else if (op.type === OpType.OUT) {
-      balance -= operation.amount;
+      this.balance -= operation.amount;
     }
 
-    operations.push(operation);
+    this.operations.push(operation);
 
-    saveWallet();
-  };
+    this.saveWallet();
+  }
 
-  this.removeOperation = function (id) {
-    const operationIndex = findIndex(operations, (operation) => {
+  removeOperation(id) {
+    const operationIndex = findIndex(this.operations, (operation) => {
       return operation.date === id;
     });
 
@@ -49,50 +52,44 @@ function Wallet() {
       throw new Error(WalletErrors.OPERATION_NOT_FOUND);
     }
 
-    const operation = operations[operationIndex];
+    const operation = this.operations[operationIndex];
 
     if (operation.type === OpType.IN) {
-      balance -= operation.amount;
+      this.balance -= operation.amount;
     } else if (operation.type === OpType.OUT) {
-      balance += operation.amount;
+      this.balance += operation.amount;
     }
 
-    operations.splice(operationIndex, 1);
-    saveWallet();
-  };
+    this.operations.splice(operationIndex, 1);
+    this.saveWallet();
+  }
 
-  this.findOperation = function (searchValue) {
+  findOperation(searchValue) {
     const val = searchValue.toLowerCase().trim();
 
     if (!val) {
-      return operations;
+      return this.operations;
     }
 
     const operationsFound = [];
 
-    for (var i = 0; i < operations.length; i++) {
-      var description = operations[i].description.toLowerCase();
+    for (var i = 0; i < this.operations.length; i++) {
+      var description = this.operations[i].description.toLowerCase();
       if (description.includes(val)) {
-        operationsFound.push(operations[i]);
+        operationsFound.push(this.operations[i]);
       }
     }
 
     return operationsFound;
-  };
+  }
 
-  this.getBalance = function () {
-    return balance;
-  };
+  getBalance() {
+    return this.balance;
+  }
 
-  this.getOperations = function () {
-    return operations;
-  };
-
-  init();
+  getOperations() {
+    return this.operations;
+  }
 }
 
-module.exports = {
-  Wallet: Wallet,
-  WalletErrors: WalletErrors,
-  OpType: OpType,
-};
+module.exports = Wallet;

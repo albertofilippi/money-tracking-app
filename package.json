@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/albertofilippi/money-tracking-app#readme",
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "babelify": "^10.0.0",
     "browser-sync": "^2.28.3",
     "browserify": "^17.0.0",
     "del": "^6.1.1",
