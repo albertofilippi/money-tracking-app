@@ -77,6 +77,18 @@ const removeOperation = function (id) {
   }
 };
 
+const resetSearch = (event) => {
+  event.preventDefault();
+  const formElement = event.target.closest("form");
+
+  if (!formElement) {
+    return;
+  }
+
+  formElement.reset();
+  updateOperationsTable();
+};
+
 const searchOperation = function (event) {
   event.preventDefault();
   const searchValue = event.target.searchInput;
@@ -189,10 +201,22 @@ const getDeleteActionBtn = (operation) => {
   return tdAction;
 };
 
+const onSearchInputChange = (event) => {
+  const searchValue = event.target.value;
+  const resetSearchElmnt = document.getElementById("reset-search-btn");
+
+  if (!resetSearchElmnt) {
+    return;
+  }
+  resetSearchElmnt.style.display = searchValue ? "inline-block" : "none";
+};
+
 window.addOperation = addOperation;
 window.toggleModal = toggleModal;
 window.closeSnackbar = closeSnackbar;
 window.searchOperation = searchOperation;
+window.resetSearch = resetSearch;
+window.onSearchInputChange = onSearchInputChange;
 
 document.addEventListener("DOMContentLoaded", function () {
   wallet = new Wallet();

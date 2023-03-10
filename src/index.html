@@ -41,8 +41,27 @@
               placeholder="Bill"
               name="searchInput"
               id="search-input"
+              oninput="onSearchInputChange(event)"
             />
-            <button class="button-icon icon-search"></button>
+            <span class="custom-input-container__actions">
+              <button
+                class="
+                  custom-input-container__actions__action
+                  button-icon
+                  icon-close
+                "
+                id="reset-search-btn"
+                data-variant="secondary"
+                onclick="resetSearch(event)"
+              ></button>
+              <button
+                class="
+                  custom-input-container__actions__action
+                  button-icon
+                  icon-search
+                "
+              ></button>
+            </span>
           </form>
         </div>
       </div>
