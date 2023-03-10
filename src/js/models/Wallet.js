@@ -63,13 +63,17 @@ function Wallet() {
 
   this.findOperation = function (searchValue) {
     const val = searchValue.toLowerCase().trim();
+
+    if (!val) {
+      return operations;
+    }
+
     const operationsFound = [];
 
     for (var i = 0; i < operations.length; i++) {
       var description = operations[i].description.toLowerCase();
-      if (description.indexOf(val) > -1) {
+      if (description.includes(val)) {
         operationsFound.push(operations[i]);
-        break;
       }
     }
 

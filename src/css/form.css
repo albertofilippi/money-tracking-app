@@ -18,9 +18,18 @@ form .custom-input {
   width: 250px;
 }
 
-.custom-input-container .button-icon {
+.custom-input-container__actions {
   position: absolute;
   right: 0;
+}
+
+.custom-input-container__actions__action[data-variant="secondary"] {
+  display: none;
+  border: none;
+  background-size: 15px;
+}
+
+.custom-input-container__actions__action {
   padding: 0 16px;
   border: 1px solid var(--grey-color);
   border-bottom-left-radius: 0;

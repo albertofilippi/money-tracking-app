@@ -10,6 +10,7 @@
   text-align: center;
   box-sizing: border-box;
   transition: 0.5s ease bottom;
+  z-index: 10;
 }
 
 .toast.show {
@@ -18,6 +19,10 @@
 
 .toast.toast--error {
   background-color: var(--error-color);
+}
+
+.toast .toast__action {
+  cursor: pointer;
 }
 
 .toast .toast__message {
