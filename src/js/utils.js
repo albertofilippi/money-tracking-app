@@ -1,7 +1,7 @@
-const { OpType } = require("./models/enums");
+import { OpType } from "./models/enums";
 
 function findIndex(list, cb) {
-  for (var i = 0; i < list.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     if (cb(list[i])) {
       return i;
     }
@@ -11,11 +11,13 @@ function findIndex(list, cb) {
 }
 
 function isValidOperation(op) {
+  if (!op) {
+    return false;
+  }
+
+  const { description, type, amount } = op;
   return (
-    op &&
-    op.description &&
-    parseFloat(op.amount) > 0 &&
-    typeof OpType[op.type] !== undefined
+    description && parseFloat(amount) > 0 && typeof OpType[type] !== undefined
   );
 }
 
@@ -31,8 +33,4 @@ function getWallet() {
   return JSON.parse(wallet);
 }
 
-module.exports = {
-  getWallet: getWallet,
-  isValidOperation: isValidOperation,
-  findIndex: findIndex,
-};
+export { getWallet, isValidOperation, findIndex };

@@ -1,5 +1,5 @@
-const Wallet = require("./models/Wallet").Wallet;
-const { SnackbarTypes } = require("./models/enums");
+import Wallet from "./models/Wallet";
+import { SnackbarTypes } from "./models/enums";
 
 let wallet;
 
@@ -129,16 +129,18 @@ const updateBalance = () => {
   balanceElement.textContent = parseFloat(getBalance()).toLocaleString();
 };
 
-const updateOperationsTable = (initialOperation) => {
-  const operations = Array.isArray(initialOperation)
-    ? Array.from(initialOperation)
-    : Array.from(getOperations());
+const updateOperationsTable = (initialOperations = getOperations()) => {
   const tableContainerElement = document.getElementById("table-container");
   const tableElement = document.getElementById("table-body");
 
-  if (!tableElement || !tableContainerElement) {
+  if (
+    !Array.isArray(initialOperations) ||
+    !tableElement ||
+    !tableContainerElement
+  ) {
     return;
   }
+  const operations = [...initialOperations];
 
   tableElement.innerHTML = "";
   if (!operations.length) {
@@ -202,7 +204,7 @@ const getDeleteActionBtn = (operation) => {
 };
 
 const onSearchInputChange = (event) => {
-  const searchValue = event.target.value;
+  const { value: searchValue } = event.target;
   const resetSearchElmnt = document.getElementById("reset-search-btn");
 
   if (!resetSearchElmnt) {

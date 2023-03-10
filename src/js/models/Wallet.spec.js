@@ -1,4 +1,4 @@
-const { Wallet } = require("./Wallet");
+import Wallet from "./Wallet";
 const {
   incomeOperation,
   invalidOperation,
