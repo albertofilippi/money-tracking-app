@@ -1,47 +1,47 @@
 .button-icon {
-  background-size: 24px;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
-  margin: 0;
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    margin: 0;
 }
 
 .button-animated {
-  transition: background-size ease 0.3s;
+    transition: background-size ease 0.3s;
 }
 
 .button-animated:hover {
-  background-size: 30px;
+    background-size: 30px;
 }
 
 .button-error {
-  color: var(--error-color);
-  border-color: var(--error-color);
+    color: var(--error-color);
+    border-color: var(--error-color);
 }
 
 .button-success {
-  color: var(--success-color);
-  border-color: var(--success-color);
+    color: var(--success-color);
+    border-color: var(--success-color);
 }
 
 .button-float-container {
-  position: fixed;
-  text-align: right;
-  bottom: 64px;
-  padding: 0;
+    position: fixed;
+    text-align: right;
+    bottom: 64px;
+    padding: 0;
 }
 
 @media (max-width: 400px) {
-  .button-float-container {
-    right: 16px;
-  }
+    .button-float-container {
+        right: 16px;
+    }
 }
 
 .button-float {
-  border-radius: 50px;
-  padding: 0;
-  width: 56px;
-  height: 56px;
-  border: 1px solid var(--primary-color);
-  background-color: white;
+    border-radius: 50px;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--primary-color);
+    background-color: white;
 }
