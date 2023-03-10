@@ -32,7 +32,7 @@ function getWallet() {
 }
 
 module.exports = {
-  getWallet: getWallet,
-  isValidOperation: isValidOperation,
-  findIndex: findIndex,
+  getWallet,
+  isValidOperation,
+  findIndex,
 };

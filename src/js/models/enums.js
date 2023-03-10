@@ -14,7 +14,7 @@ const SnackbarTypes = Object.freeze({
 });
 
 module.exports = {
-  OpType: OpType,
-  WalletErrors: WalletErrors,
-  SnackbarTypes: SnackbarTypes,
+  OpType,
+  WalletErrors,
+  SnackbarTypes,
 };
