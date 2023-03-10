@@ -114,7 +114,7 @@ const updateBalance = () => {
     return;
   }
 
-  balanceElement.textContent = getBalance();
+  balanceElement.textContent = parseFloat(getBalance()).toLocaleString();
 };
 
 const updateOperationsTable = (initialOperation) => {
@@ -152,7 +152,7 @@ const getOperationTableRow = (operation) => {
       value: operation.description,
     },
     {
-      value: operation.amount,
+      value: parseFloat(operation.amount).toLocaleString(),
       classes: "operation-amount",
     },
     {
