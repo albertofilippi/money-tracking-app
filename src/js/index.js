@@ -129,16 +129,17 @@ const updateBalance = () => {
   balanceElement.textContent = parseFloat(getBalance()).toLocaleString();
 };
 
-const updateOperationsTable = (initialOperation) => {
-  const operations = Array.isArray(initialOperation)
-    ? [...initialOperation]
-    : [...getOperations()];
-  const tableContainerElement = document.getElementById("table-container");
-  const tableElement = document.getElementById("table-body");
-
-  if (!tableElement || !tableContainerElement) {
+const updateOperationsTable = (initialOperations = getOperations()) => {
+  if (
+    Array.isArray(initialOperations) ||
+    !tableElement ||
+    !tableContainerElement
+  ) {
     return;
   }
+  const operations = [...initialOperations];
+  const tableContainerElement = document.getElementById("table-container");
+  const tableElement = document.getElementById("table-body");
 
   tableElement.innerHTML = "";
   if (!operations.length) {
