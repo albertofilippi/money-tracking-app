@@ -131,8 +131,8 @@ const updateBalance = () => {
 
 const updateOperationsTable = (initialOperation) => {
   const operations = Array.isArray(initialOperation)
-    ? Array.from(initialOperation)
-    : Array.from(getOperations());
+    ? [...initialOperation]
+    : [...getOperations()];
   const tableContainerElement = document.getElementById("table-container");
   const tableElement = document.getElementById("table-body");
 
